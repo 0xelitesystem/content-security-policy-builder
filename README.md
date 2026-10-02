@@ -14,13 +14,37 @@ Deploy any policy in report-only mode first to see what it would block before it
 
 A dark green printed circuit board: white silkscreen labels, pill-shaped source pads, sliding toggles, and the header rendered on a copper-trace field.
 
+## Use
+
+1. Switch on the directives you need with their toggles, for example `script-src`, `img-src` or `frame-ancestors`.
+2. Click the source pads under each directive to pick its allowed sources, and type any extra hosts, space-separated, into its host field.
+3. Read the warning line under the header: it flags a directive with no source and any use of `'unsafe-inline'` or `'unsafe-eval'`.
+4. Press **Copy** to take the Content-Security-Policy header value.
+
+## Why this exists
+
+A Content-Security-Policy is a long string of directives and quoted keywords that is easy to get subtly wrong, and a wrong policy either breaks the page or protects nothing. This tool builds the value from toggles and shows the weak spots as you go. It is a single HTML file with no tracking and no network calls, and it is MIT licensed.
+
 ## Privacy
 
 Everything runs in your browser. Nothing you type is sent anywhere, stored, or saved. Closing the tab clears it.
 
-## Use it
+## Run locally
 
 Open `index.html` in any modern browser, or host it as a static page. No build step, no dependencies, no network calls.
+
+To get your own copy:
+
+```
+git clone https://github.com/0xelitesystem/content-security-policy-builder
+cd content-security-policy-builder
+```
+
+Then open `index.html` directly, or serve the folder with `python -m http.server` and visit http://localhost:8000/.
+
+## Build
+
+No build step. The whole tool is one `index.html` file with inline CSS and JavaScript, and there is nothing to install or compile.
 
 ## More
 
